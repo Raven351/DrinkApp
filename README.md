@@ -7,13 +7,10 @@ Pracując w grupie, zaprojektuj i zaimplementuj mobilną aplikację multimedialn
 
 Wymagania:
 
-Aplikacja wykorzystuje biblioteki obsługi obrazów i dźwięków,
-Aplikacja odtwarza klipy multimedialne z wykorzystaniem usługi (ang. Service) systemu Android,
-LUB
-Aplikacja odtwarza strumienie multimedialne udostępniane w sieci,
-Aplikacja wykorzystuje rozpoznawanie obrazu,
-LUB
-Aplikacja wykorzystuje rozpoznawanie mowy.
+- Aplikacja wykorzystuje biblioteki obsługi obrazów i dźwięków,
+- Aplikacja odtwarza klipy multimedialne z wykorzystaniem usługi (ang. Service) systemu Android **LUB** Aplikacja odtwarza strumienie multimedialne udostępniane w sieci,
+- Aplikacja wykorzystuje rozpoznawanie obrazu **LUB** Aplikacja wykorzystuje rozpoznawanie mowy.
+
 Elementy oceny projektu:
 
 Zgodność z wymaganiami podanymi powyżej (0 - 10 pkt)
