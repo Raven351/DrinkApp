@@ -16,11 +16,20 @@ import com.ravensu.drinkapp.models.Drink;
 
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.Handler;
 
 public class Quiz extends AppCompatActivity {
 
-    private String requestUrl = "www.thecocktaildb.com/api/json/v1/1/random.php";
+    private final String requestUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     private final int quizSize = 10;
     private int correctAnswers = 0;
     private int wrongAnswers = 0;
@@ -37,21 +46,29 @@ public class Quiz extends AppCompatActivity {
 
     private void loadDataForQuiz() {
         Gson gson = new Gson();
-        for (int i = 0; i < quizSize; i++){
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET,
-                    requestUrl,
-                    null,
-                    response -> {
-                        ingredients.add(response.toString());
-                        Log.d("QuizR", "loadDataForQuiz: " + response.toString());
-                    },
-                    error -> {
-                        Log.e("QuizR", "loadDataForQuiz: " + error.toString());
+        for (int i = 0; i < quizSize; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        URL url = new URL(requestUrl);
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                        StringBuilder sb = new StringBuilder();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null){
+                            sb.append(line).append('\n');
+                        }
+                        String body = sb.toString();
+                        urlConnection.disconnect();
+                        Log.d("Quiz", "loadDataForQuiz: " + body);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-            );
+                }
+            }).start();
         }
-        TextView drinkName = findViewById(R.id.drinkNameTextView);
-        drinkName.setText(ingredients.size());
     }
 }
