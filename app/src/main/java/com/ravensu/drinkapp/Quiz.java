@@ -40,13 +40,15 @@ public class Quiz extends AppCompatActivity {
     private int wrongAnswers = 0;
     private ArrayList<Drink> drinks = new ArrayList<>();
     private ArrayList<String> ingredients = new ArrayList<>();
-
+    private TextView drinkNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        this.drinkNameTextView = findViewById(R.id.drinkNameTextView);
         loadDataForQuiz();
+        drinkNameTextView.setText(drinks.get(0).getName());
     }
 
     private void loadDataForQuiz() {
@@ -69,7 +71,7 @@ public class Quiz extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(body);
                         JSONArray jsonArray = jsonObject.getJSONArray("drinks");
                         Drink drink = gson.fromJson(jsonArray.getString(0), Drink.class);
-                        Log.d("Quiz", "run: " + drink.getName());
+                        drinks.add(drink);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

@@ -29,11 +29,11 @@
         app:layout_constraintTop_toBottomOf="@+id/drinkThumbnail" />
 
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/questionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Qustion"
+        android:text="Question"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -51,7 +51,7 @@
         android:padding="14dp"
         android:text="Yes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
 
     <Button
         android:id="@+id/quizNoButton"
@@ -64,5 +64,5 @@
         android:padding="14dp"
         android:text="No"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
