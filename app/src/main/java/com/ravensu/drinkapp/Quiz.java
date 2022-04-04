@@ -11,9 +11,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.ravensu.drinkapp.models.Drink;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -24,7 +27,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Handler;
 
 public class Quiz extends AppCompatActivity {
@@ -61,10 +66,15 @@ public class Quiz extends AppCompatActivity {
                         }
                         String body = sb.toString();
                         urlConnection.disconnect();
-                        Log.d("Quiz", "loadDataForQuiz: " + body);
+                        JSONObject jsonObject = new JSONObject(body);
+                        JSONArray jsonArray = jsonObject.getJSONArray("drinks");
+                        Drink drink = gson.fromJson(jsonArray.getString(0), Drink.class);
+                        Log.d("Quiz", "run: " + drink.getName());
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }

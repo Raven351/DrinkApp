@@ -1,8 +1,11 @@
 package com.ravensu.drinkapp.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Drink {
+    @SerializedName("strDrink")
     private String name;
     private String imgUrl;
     private ArrayList<String> ingredientsList;
