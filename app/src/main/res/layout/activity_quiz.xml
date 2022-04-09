@@ -48,6 +48,7 @@
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:layout_marginTop="20dp"
+        android:onClick="onClickYes"
         android:padding="14dp"
         android:text="Yes"
         android:textSize="18sp"
@@ -63,6 +64,7 @@
         android:layout_marginRight="72dp"
         android:padding="14dp"
         android:text="No"
+        android:onClick="onClickNo"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
