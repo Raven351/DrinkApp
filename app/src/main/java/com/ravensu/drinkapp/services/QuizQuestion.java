@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class QuizQuestion {
-    private Drink drink;
+    private final Drink drink;
     private final QuizQuestionType quizQuestionType;
     private final boolean questionAnswer;
     private final String question;
@@ -28,9 +28,6 @@ public class QuizQuestion {
             case IS_ALCOHOLIC:{
                 return "Do you think this drink contains alcohol?";
             }
-            case DOES_CONTAIN:{
-                return "Do you think this drink contains ";
-            }
             default: {
                 return "Invalid question";
             }
@@ -40,7 +37,7 @@ public class QuizQuestion {
     private boolean setUpAnswer(){
         switch (quizQuestionType) {
             case IS_ALCOHOLIC:{
-                return this.drink.isAlcoholic();
+                return !this.drink.getIsAlcoholicStr().contains("Non");
             }
             default: {
                 return false;

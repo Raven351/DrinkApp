@@ -2,6 +2,7 @@ package com.ravensu.drinkapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -125,7 +126,10 @@ public class Quiz extends AppCompatActivity {
             currentQuestionIndex += 1;
         }
         else {
-
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra("correctAnswers", correctAnswers);
+            intent.putExtra("wrongAnswers", wrongAnswers);
+            this.startActivity(intent);
         }
     }
 }

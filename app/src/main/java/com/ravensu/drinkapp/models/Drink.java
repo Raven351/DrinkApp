@@ -11,14 +11,16 @@ public class Drink {
     @SerializedName("strDrinkThumb")
     private String imgUrl;
 
-    private ArrayList<String> ingredientsList;
-    private boolean isAlcoholic;
+    @SerializedName("strAlcoholic")
+    private String isAlcoholicStr;
 
-    public Drink(String name, String url, ArrayList<String> ingredientsList, boolean isAlcoholic) {
+    private ArrayList<String> ingredientsList;
+
+    public Drink(String name, String url, ArrayList<String> ingredientsList, String isAlcoholicStr) {
         this.name = name;
         this.imgUrl = url;
         this.ingredientsList = ingredientsList;
-        this.isAlcoholic = isAlcoholic;
+        this.isAlcoholicStr = isAlcoholicStr;
     }
 
     public String getName() {
@@ -37,19 +39,19 @@ public class Drink {
         this.ingredientsList = ingredientsList;
     }
 
-    public boolean isAlcoholic() {
-        return isAlcoholic;
-    }
-
-    public void setAlcoholic(boolean alcoholic) {
-        isAlcoholic = alcoholic;
-    }
-
     public String getImgUrl() {
         return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getIsAlcoholicStr() {
+        return isAlcoholicStr;
+    }
+
+    public void setIsAlcoholicStr(String isAlcoholicStr) {
+        this.isAlcoholicStr = isAlcoholicStr;
     }
 }
